@@ -5,7 +5,35 @@
 void testApp::setup(){
 	ofSetVerticalSync(true);
 	//ofSetFrameRate(100);
-	map.setup(new OpenStreetMapProvider(), (double)ofGetWidth(), (double)ofGetHeight());
+
+  vector<string> subdomains;
+
+  //stamen toner
+  //string baseurl = "tile.stamen.com/toner/";
+  //subdomains.push_back("");
+
+  //cartodb test
+  string baseurl = "api.cartocdn.com/documentation/tiles/layergroup/c1c72c529875f972723e03b37c71e4c6:0/";
+  subdomains.push_back("0.");
+  subdomains.push_back("1.");
+  subdomains.push_back("2.");
+  subdomains.push_back("3.");
+
+  //openstreetmaps
+  //string baseurl = "tile.openstreetmap.org/";
+  //subdomains.push_back("");
+  //subdomains.push_back("a.");
+  //subdomains.push_back("b.");
+  //subdomains.push_back("c.");
+
+	map.setup( 
+    new TemplatedMapProvider( 
+      baseurl, subdomains ), 
+    (double)ofGetWidth(), 
+    (double)ofGetHeight() );
+
+	//map.setup(new OpenStreetMapProvider(), (double)ofGetWidth(), (double)ofGetHeight());
+
 	map.setZoom(3);
 }
 

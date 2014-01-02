@@ -4,6 +4,7 @@
 #include "ofMain.h"
 #include "Map.h"
 #include "OpenStreetMapProvider.h"
+#include "TemplatedMapProvider.h"
 
 class testApp : public ofBaseApp{
 
